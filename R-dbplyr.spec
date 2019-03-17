@@ -4,22 +4,30 @@
 #
 Name     : R-dbplyr
 Version  : 1.3.0
-Release  : 17
+Release  : 18
 URL      : https://cran.r-project.org/src/contrib/dbplyr_1.3.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dbplyr_1.3.0.tar.gz
 Summary  : A 'dplyr' Back End for Databases
 Group    : Development/Tools
 License  : MIT
-Requires: R-DBI
-Requires: R-RSQLite
-Requires: R-nycflights13
-Requires: R-tibble
-Requires: R-tidyselect
+Requires: R-bit64
+Requires: R-blob
+Requires: R-memoise
+Requires: R-mime
+Requires: R-purrr
+Requires: R-utf8
 BuildRequires : R-DBI
 BuildRequires : R-RSQLite
+BuildRequires : R-bit64
+BuildRequires : R-blob
+BuildRequires : R-memoise
+BuildRequires : R-mime
 BuildRequires : R-nycflights13
+BuildRequires : R-pkgconfig
+BuildRequires : R-purrr
 BuildRequires : R-tibble
 BuildRequires : R-tidyselect
+BuildRequires : R-utf8
 BuildRequires : buildreq-R
 
 %description
@@ -34,10 +42,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547050380
+export SOURCE_DATE_EPOCH=1552859912
 
 %install
-export SOURCE_DATE_EPOCH=1547050380
+export SOURCE_DATE_EPOCH=1552859912
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -73,8 +81,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library dbplyr|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  dbplyr || :
 
 
 %files
@@ -111,3 +118,63 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/dbplyr/help/paths.rds
 /usr/lib64/R/library/dbplyr/html/00Index.html
 /usr/lib64/R/library/dbplyr/html/R.css
+/usr/lib64/R/library/dbplyr/tests/testthat.R
+/usr/lib64/R/library/dbplyr/tests/testthat/explain-sqlite.txt
+/usr/lib64/R/library/dbplyr/tests/testthat/helper-output.R
+/usr/lib64/R/library/dbplyr/tests/testthat/helper-src.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-arrange.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-collect.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-colwise.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-compute.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-copy_to.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-distinct.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-do.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-escape.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-explain.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-filter.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-group-by.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-group-size.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-ident.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-joins-consistent.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-joins.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-lazy-ops.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-mutate.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-output.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-partial_eval.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-pull.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-remote.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-schema.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-select.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sets.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-build.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-escape.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-expr.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-optimise.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-query-select.txt
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-query.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-render.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-translator.txt
+/usr/lib64/R/library/dbplyr/tests/testthat/test-sql-variant.txt
+/usr/lib64/R/library/dbplyr/tests/testthat/test-src_dbi.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-summarise.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-tbl-sql.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-MySQL.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-access.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-hive.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-impala.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-literals.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-math.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-mssql.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-odbc.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-oracle.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-postgresql.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-sql-helpers.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-sql-paste.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-sql-window.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-sqlite.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-teradata.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-vectorised.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate-window.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-translate.r
+/usr/lib64/R/library/dbplyr/tests/testthat/test-utils.R
+/usr/lib64/R/library/dbplyr/tests/testthat/test-win_over.R

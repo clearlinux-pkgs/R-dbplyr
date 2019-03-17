@@ -1,7 +1,13 @@
 1.3.0
 R-DBI
 R-RSQLite
+R-bit64
+R-blob
+R-memoise
+R-mime
 R-nycflights13
 R-pkgconfig
+R-purrr
 R-tibble
 R-tidyselect
+R-utf8
