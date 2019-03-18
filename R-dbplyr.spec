@@ -4,18 +4,12 @@
 #
 Name     : R-dbplyr
 Version  : 1.3.0
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/dbplyr_1.3.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dbplyr_1.3.0.tar.gz
 Summary  : A 'dplyr' Back End for Databases
 Group    : Development/Tools
 License  : MIT
-Requires: R-bit64
-Requires: R-blob
-Requires: R-memoise
-Requires: R-mime
-Requires: R-purrr
-Requires: R-utf8
 BuildRequires : R-DBI
 BuildRequires : R-RSQLite
 BuildRequires : R-bit64
@@ -42,10 +36,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552859912
+export SOURCE_DATE_EPOCH=1552907653
 
 %install
-export SOURCE_DATE_EPOCH=1552859912
+export SOURCE_DATE_EPOCH=1552907653
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
