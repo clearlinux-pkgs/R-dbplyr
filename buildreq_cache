@@ -1,11 +1,16 @@
-1.3.0
+1.4.0
 R-DBI
 R-RSQLite
+R-Rcpp
 R-bit64
 R-blob
+R-dplyr
+R-dtplyr
+R-glue
 R-memoise
 R-mime
 R-nycflights13
+R-pillar
 R-pkgconfig
 R-purrr
 R-tibble
