@@ -4,35 +4,41 @@
 #
 Name     : R-dbplyr
 Version  : 1.4.2
-Release  : 28
+Release  : 29
 URL      : https://cran.r-project.org/src/contrib/dbplyr_1.4.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dbplyr_1.4.2.tar.gz
 Summary  : A 'dplyr' Back End for Databases
 Group    : Development/Tools
 License  : MIT
 Requires: R-DBI
+Requires: R-R6
 Requires: R-RSQLite
-Requires: R-bit64
-Requires: R-blob
+Requires: R-assertthat
+Requires: R-dplyr
 Requires: R-dtplyr
-Requires: R-memoise
-Requires: R-nycflights13
+Requires: R-glue
+Requires: R-purrr
+Requires: R-rlang
 Requires: R-tibble
 Requires: R-tidyselect
 BuildRequires : R-DBI
+BuildRequires : R-R6
 BuildRequires : R-RSQLite
-BuildRequires : R-bit64
-BuildRequires : R-blob
+BuildRequires : R-assertthat
+BuildRequires : R-dplyr
 BuildRequires : R-dtplyr
-BuildRequires : R-memoise
-BuildRequires : R-nycflights13
+BuildRequires : R-glue
+BuildRequires : R-purrr
+BuildRequires : R-rlang
 BuildRequires : R-tibble
 BuildRequires : R-tidyselect
 BuildRequires : buildreq-R
 
 %description
-# dbplyr <img src="man/figures/logo.png" align="right" height="139" />
-<!-- badges: start -->
+work with remote database tables as if they are in-memory data frames.
+    Basic features works with any database that has a 'DBI' back end; more
+    advanced features require 'SQL' translation to be provided by the
+    package author.
 
 %prep
 %setup -q -c -n dbplyr
@@ -41,13 +47,13 @@ BuildRequires : buildreq-R
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1560878547
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569286041
 
 %install
-export SOURCE_DATE_EPOCH=1560878547
+export SOURCE_DATE_EPOCH=1569286041
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -76,7 +82,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
