@@ -4,7 +4,7 @@
 #
 Name     : R-dbplyr
 Version  : 1.4.2
-Release  : 29
+Release  : 30
 URL      : https://cran.r-project.org/src/contrib/dbplyr_1.4.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dbplyr_1.4.2.tar.gz
 Summary  : A 'dplyr' Back End for Databases
@@ -12,10 +12,8 @@ Group    : Development/Tools
 License  : MIT
 Requires: R-DBI
 Requires: R-R6
-Requires: R-RSQLite
 Requires: R-assertthat
 Requires: R-dplyr
-Requires: R-dtplyr
 Requires: R-glue
 Requires: R-purrr
 Requires: R-rlang
@@ -33,12 +31,11 @@ BuildRequires : R-rlang
 BuildRequires : R-tibble
 BuildRequires : R-tidyselect
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
-work with remote database tables as if they are in-memory data frames.
-    Basic features works with any database that has a 'DBI' back end; more
-    advanced features require 'SQL' translation to be provided by the
-    package author.
+# dbplyr <img src="man/figures/logo.png" align="right" height="139" />
+<!-- badges: start -->
 
 %prep
 %setup -q -c -n dbplyr
@@ -48,10 +45,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569286041
+export SOURCE_DATE_EPOCH=1571816213
 
 %install
-export SOURCE_DATE_EPOCH=1569286041
+export SOURCE_DATE_EPOCH=1571816213
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
