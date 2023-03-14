@@ -4,7 +4,7 @@
 #
 Name     : R-dbplyr
 Version  : 2.3.1
-Release  : 61
+Release  : 62
 URL      : https://cran.r-project.org/src/contrib/dbplyr_2.3.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dbplyr_2.3.1.tar.gz
 Summary  : A 'dplyr' Back End for Databases
@@ -43,9 +43,6 @@ BuildRequires : R-tidyselect
 BuildRequires : R-vctrs
 BuildRequires : R-withr
 BuildRequires : buildreq-R
-# Suppress stripping binaries
-%define __strip /bin/true
-%define debug_package %{nil}
 
 %description
 remote database tables as if they are in-memory data frames.  Basic
@@ -62,10 +59,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1677370580
+export SOURCE_DATE_EPOCH=1678814946
 
 %install
-export SOURCE_DATE_EPOCH=1677370580
+export SOURCE_DATE_EPOCH=1678814946
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
