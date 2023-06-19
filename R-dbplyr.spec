@@ -5,7 +5,7 @@
 #
 Name     : R-dbplyr
 Version  : 2.3.2
-Release  : 65
+Release  : 66
 URL      : https://cran.r-project.org/src/contrib/dbplyr_2.3.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/dbplyr_2.3.2.tar.gz
 Summary  : A 'dplyr' Back End for Databases
