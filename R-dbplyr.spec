@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-dbplyr
-Version  : 2.3.2
-Release  : 66
-URL      : https://cran.r-project.org/src/contrib/dbplyr_2.3.2.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/dbplyr_2.3.2.tar.gz
+Version  : 2.3.3
+Release  : 67
+URL      : https://cran.r-project.org/src/contrib/dbplyr_2.3.3.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/dbplyr_2.3.3.tar.gz
 Summary  : A 'dplyr' Back End for Databases
 Group    : Development/Tools
 License  : MIT
@@ -53,17 +53,19 @@ remote database tables as if they are in-memory data frames.  Basic
 
 %prep
 %setup -q -n dbplyr
-cd %{_builddir}/dbplyr
+pushd ..
+cp -a dbplyr buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679503311
+export SOURCE_DATE_EPOCH=1689007517
 
 %install
-export SOURCE_DATE_EPOCH=1679503311
+export SOURCE_DATE_EPOCH=1689007517
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -101,6 +103,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc . || :
 
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
